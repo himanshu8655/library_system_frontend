@@ -1,0 +1,45 @@
+<div class="container">
+	<main id="main">
+		<section id="left">
+			<div id="head">
+				<h1>Life has great moments</h1>
+				<p>Enjoy them with Books!</p>
+			</div>
+			<h3>Only {{bookPrice}}$</h3>
+		</section>
+		<section id="right">
+			<h1>Purchase</h1>
+			<form (ngSubmit)="purchase($event)">
+				<div id="form-card" class="form-field">
+					<label for="cc-number">Card number:</label>
+					<input id="cc-number" maxlength="19" placeholder="1111 2222 3333 4444" required>
+				</div>
+	
+				<div id="form-date" class="form-field">
+					<label for="expiry-month">Expiry date:</label>
+					<div id="date-val">
+						<select id="expiry-month" required>
+							<option id="trans-label_month" value="" default="default" selected="selected">Month</option>
+							<ng-container *ngFor="let month of months">
+							  <option [value]="month">{{ month < 10 ? '0' + month : month }}</option>
+							</ng-container>
+						  </select>
+						<select id="expiry-year" required>
+																<option id="trans-label_year" value="" default="" selected="selected">Year</option>
+																<ng-container *ngFor="let year of months">
+																	<option [value]="year">{{year+2022}}</option>
+																  </ng-container>
+																</select>
+					</div>
+				</div>
+				
+				<div id="form-sec-code" class="form-field">
+					<label for="sec-code">Security code:</label>
+					<input type="password" maxlength="3" placeholder="123" required>
+				</div>
+				
+				<button class="submit-btn">Purchase Product</button>
+			</form>
+		</section>
+	</main>
+</div>

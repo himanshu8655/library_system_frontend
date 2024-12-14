@@ -1,0 +1,51 @@
+<div>
+    <div class="parent">
+        <h1>Our Collection</h1>
+    </div>
+    <div class='parent'>
+        <div class="child">
+          <mat-form-field>
+            <mat-label>View:</mat-label>
+            <mat-select [(ngModel)]="view"  (ngModelChange)="onFilterChange($event)">
+              <mat-option value="gridView">Grid</mat-option>
+              <mat-option value="tileView">Tile</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+       
+        <mat-form-field style="margin: 20px;">
+          <mat-label>Filter:</mat-label>
+          <mat-select [(ngModel)]="filter_by"  (ngModelChange)="onFilterChange($event)">
+            <mat-option value="bookId">Recent</mat-option>
+            <mat-option value="price">Price</mat-option>
+            <mat-option value="bookName">Book Title</mat-option>
+            <mat-radio-group [(ngModel)]="sortDirection" aria-label="Select an option" color="primary"  (ngModelChange)="onFilterChange($event)">
+              <p style="padding-left: 10px; padding-top: 10px;">Sort By:</p>
+              <mat-radio-button value="asc">Ascending</mat-radio-button>
+              <mat-radio-button value="desc">Descending</mat-radio-button>
+            </mat-radio-group>
+          </mat-select>
+        
+        </mat-form-field>
+            </div>
+            
+  <div class='parent' *ngIf="view==='gridView'">
+    <div class="child" *ngFor="let book of books_data.content">
+        <app-book-grid [book]="book"></app-book-grid>
+
+    </div>
+  </div>
+  <div class='parent' *ngIf="view=='tileView'">
+    <app-book-tile [books]="books_data.content" ></app-book-tile>
+  </div>
+  <div class="parent">
+    <div class="child">
+        <mat-paginator #paginator [length]="books_data.totalElements"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+        (page)="onPageChange($event)">
+  </mat-paginator>
+    </div>
+  </div>
+  </div>
