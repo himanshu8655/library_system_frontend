@@ -1,0 +1,37 @@
+<div class="header">
+  <div class="header-left">
+    
+    <a routerLink="/home" routerLinkActive="active-link" class="nav-link">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      <p>Home</p>
+    </a>
+
+    <a routerLink="/book" routerLinkActive="active-link" class="nav-link">
+      <mat-icon aria-hidden="false" aria-label="Book icon" fontIcon="book"></mat-icon>
+      <p>Books</p>
+    </a>
+    <a routerLink="/support" routerLinkActive="active-link" class="nav-link">
+      <mat-icon aria-hidden="false" aria-label="Support icon" fontIcon="settings"></mat-icon>
+      <p>Support</p>
+    </a>
+    <a routerLink="/support" routerLinkActive="active-link" class="nav-link">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="support"></mat-icon>
+      <p>About Us</p>
+    </a>
+  </div>
+  <div class="header-right">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="profile-icon">
+      <mat-icon color="black">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="profilePage()">
+        <mat-icon>person</mat-icon>
+        <span>Update Profile</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="book-tile" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" [ngClass]="{ 'hovered': isHovered }">
+  <div class="flip-container" [ngClass]="{ 'hovered': isHovered }">
+    <div class="flipper">
+      <div class="front">
+        <img src="{{ book?.thumbnailUrl }}" loading="lazy" alt="Book Cover" class="book-cover">
+        <div class="front-details">
+          <h2>{{ book?.bookName }}</h2>
+        </div>
+      </div>
+      <div class="back">
+        <div class="book-details">
+          <div class="book-info">
+            <h2>{{ book?.bookName }}</h2>
+            <p class="author">Author: ~ {{ book?.author }}</p>
+            <p class="description">{{ book?.aboutBook }}</p>
+            <p class="price">Amount: ${{ book?.price }}</p>
+          </div>
+          <button class="btn btn-primary" (click)="checkOut(book?.bookId!)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
